@@ -26,6 +26,10 @@ export interface CustomConfig {
    * title language
    */
   titleLanguage?: 'en-US' | 'zh-CN';
+  /**
+   * commit hash is short
+   */
+  commitUrlHash?: 'shortHash' | 'hash'
 }
 
 const explorer = cosmiconfigSync('changelog');
