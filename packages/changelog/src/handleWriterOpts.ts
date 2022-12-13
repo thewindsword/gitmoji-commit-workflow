@@ -24,6 +24,9 @@ export default (customConfig: CustomConfig): Options => ({
   headerPartial: header,
   // 替换 commit.hbs 模板中的 gitUserInfo
   commitPartial: commit.replace(
+    /{{hash}}/g,
+    customConfig.commitUrlHash ? `{{${customConfig.commitUrlHash}}}` : '{{shortHash}}'
+  ).replace(
     /{{gitUserInfo}}/g,
     customConfig.showAuthor ? author : '',
   ),

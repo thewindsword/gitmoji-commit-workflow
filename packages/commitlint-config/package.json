@@ -13,10 +13,10 @@
   "files": [
     "lib"
   ],
-  "homepage": "https://github.com/arvinxx/gitmoji-commit-workflow/tree/master/packages/config",
+  "homepage": "https://github.com/thewindsword/gitmoji-commit-workflow/tree/master/packages/config",
   "repository": {
     "type": "git",
-    "url": "https://github.com/arvinxx/gitmoji-commit-workflow.git"
+    "url": "https://github.com/thewindsword/gitmoji-commit-workflow.git"
   },
   "publishConfig": {
     "access": "public",
