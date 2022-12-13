@@ -43,7 +43,8 @@ describe('transform', () => {
     });
 
     expect(transformer(commit, defaultContext)).toEqual({
-      hash: '1234567',
+      hash: '12345678abc',
+      shortHash: '1234567',
       header: '',
       mentions: [],
       notes: [],
