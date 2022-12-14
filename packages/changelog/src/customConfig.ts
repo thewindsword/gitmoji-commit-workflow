@@ -29,7 +29,11 @@ export interface CustomConfig {
   /**
    * commit hash is short
    */
-  commitUrlHash?: 'shortHash' | 'hash'
+  commitUrlHash?: 'shortHash' | 'hash';
+  /**
+   * isAzureRepo
+   */
+  isAzureRepo?: boolean;
 }
 
 const explorer = cosmiconfigSync('changelog');

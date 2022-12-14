@@ -35,7 +35,12 @@ exports.default = function (customConfig) {
     commitsSort: ['scope', 'subject'],
     noteGroupsSort: 'title',
     mainTemplate: template,
-    headerPartial: header,
+    headerPartial: header.replace(
+      /\/compare\/{{previousTag}}...{{currentTag}}\)/g,
+      customConfig.isAzureRepo
+        ? '/branches?baseVersion=GB{{previousTag}}&targetVersion=GB{{currentTag}}&_a=commits)'
+        : '/compare/{{previousTag}}...{{currentTag}})',
+    ),
     // 替换 commit.hbs 模板中的 gitUserInfo
     commitPartial: commit
       .replace(
