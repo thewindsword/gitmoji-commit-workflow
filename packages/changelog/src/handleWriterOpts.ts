@@ -21,14 +21,20 @@ export default (customConfig: CustomConfig): Options => ({
   commitsSort: ['scope', 'subject'],
   noteGroupsSort: 'title',
   mainTemplate: template,
-  headerPartial: header,
-  // 替换 commit.hbs 模板中的 gitUserInfo
-  commitPartial: commit.replace(
-    /{{hash}}/g,
-    customConfig.commitUrlHash ? `{{${customConfig.commitUrlHash}}}` : '{{shortHash}}'
-  ).replace(
-    /{{gitUserInfo}}/g,
-    customConfig.showAuthor ? author : '',
+  headerPartial: header.replace(
+    /\/compare\/{{previousTag}}...{{currentTag}}\)/g,
+    customConfig.isAzureRepo
+      ? '/branches?baseVersion=GB{{previousTag}}&targetVersion=GB{{currentTag}}&_a=commits)'
+      : '/compare/{{previousTag}}...{{currentTag}})',
   ),
+  // 替换 commit.hbs 模板中的 gitUserInfo
+  commitPartial: commit
+    .replace(
+      /{{hash}}/g,
+      customConfig.commitUrlHash
+        ? `{{${customConfig.commitUrlHash}}}`
+        : '{{shortHash}}',
+    )
+    .replace(/{{gitUserInfo}}/g, customConfig.showAuthor ? author : ''),
   footerPartial: footer,
 });
